@@ -1,0 +1,22 @@
+<div class="card"
+     *ngFor="let book of books$ | async">
+  <div class="card-body">
+    <h5 class="card-title">{{book.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">By {{book.author}}</h6>
+    <p class="card-text">Book {{book.title}} by {{book.author}} is in the genre of <em>{{book.genre}}</em></p>
+    <div *ngIf="book.isSaved">
+      <input class="form-control"
+             #newTitle>
+      <button (click)="updateTitle(newTitle, book)"
+              class="btn btn-sm btn-success">Change the title To this.</button>
+    </div>
+    <div class="alert alert-info"
+         *ngIf="!book.isSaved">
+      <p>Geesh... wait a darned second...</p>
+    </div>
+    <a href="#"
+       class="card-link">Card link</a>
+    <a href="#"
+       class="card-link">Another link</a>
+  </div>
+</div>
